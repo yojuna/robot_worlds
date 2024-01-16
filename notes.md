@@ -4,6 +4,7 @@
     - index and restructure directories for all robot and world models 
     - add description, specific credits, usage info and images for each world & robot
     - add specific launch files for all worlds
+        - Note: error while launching world with tb3, must be some kind of path error; need to fix
     - add launch files with configurable launch arguments for different robots and worlds
     - add nav2 library, interfaced modularly with repository
 
