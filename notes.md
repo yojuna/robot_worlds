@@ -7,9 +7,23 @@
     - add launch files with configurable launch arguments for different robots and worlds
     - add nav2 library, interfaced modularly with repository
 
+# dev log
+
+## 15th Jan 
+    - revisiting existing code to see how much has 'atrophied'
+    - started adding support for other world models with the tb3 robot spawn
+    - multiple problems atm, 
+        - tb3 spawn launches but world file does not load
+        - other world models from other repositories: tried turtlebot3_house, hospital and office. facing slightly different kinds of path issues; need to resolve asap.
+            - tried modifying launch files to handle this, work in progress atm.
+        - repo is getting too large due to copying other repository models/meshes -- add support for making specific world repositories/folder into recursive submodules from the latest upstream repositories
+            - user can also sparse checkout any specific repo instead of whole collection
+
 # directory structure
 
 ## index
+
+```
 (ros2) nemo@homelab:~/code/repos/roboforge_dev/robot_worlds_ws$ tree -L 1 src/robot_worlds/worlds/
 src/robot_worlds/worlds/
 ├── bookstore
@@ -30,6 +44,7 @@ src/robot_worlds/worlds/
 └── turtlebot3_world
 
 16 directories, 0 files
+```
 
 
 ## directories and files
@@ -141,3 +156,7 @@ src/robot_worlds/worlds/
 43 directories, 57 files
 
 ```
+
+---
+
+
