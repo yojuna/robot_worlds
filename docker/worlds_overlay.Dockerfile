@@ -31,6 +31,7 @@ RUN apt install -y ros-${ROS_DISTRO}-xacro \
     ros-${ROS_DISTRO}-robot-localization \
     ros-${ROS_DISTRO}-navigation2 \
     ros-${ROS_DISTRO}-nav2-bringup \
+    ros-${ROS_DISTRO}-moveit \
     ros-dev-tools \
     python3-wstool \
     xterm
@@ -43,9 +44,9 @@ RUN wget https://bootstrap.pypa.io/get-pip.py -P ./src/${REPO_DIR}/docker/script
 # RUN pip3 install transforms3d opencv-contrib-python==4.6.0.66 tinyspline
 
 # Use Cyclone DDS as middleware
-# RUN apt-get update && apt-get install -y --no-install-recommends \
-#  ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
-# ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+RUN apt-get update && apt-get install -y --no-install-recommends \
+ ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # robot specific installations
 

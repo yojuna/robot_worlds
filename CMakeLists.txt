@@ -45,7 +45,7 @@ if(BUILD_TESTING)
 endif()
 
 # Install launch files.
-install(DIRECTORY launch robots worlds
+install(DIRECTORY launch robots worlds rviz
         DESTINATION share/${PROJECT_NAME}/
 )
 

@@ -4,6 +4,32 @@ Collection of Gazebo ROS Simulation environments from various sources and prepar
 
 # setup / usage
 
+## docker based workflow setup (recommended)
+
+build the docker images (base ros2 > development overlay)
+
+```
+# move to workspace directory
+cd ws_robot_worlds
+```
+```
+./src/robot_worlds/docker/build_docker.sh 
+```
+If the build is successful, run the docker container with the development workspace. The local folders are mounted to the docker workspace when running. this allows you to edit/view your code directly on your filesystem, which runs in the docker container.
+
+run:
+```
+./src/robot_worlds/docker/run_docker.sh 
+```
+
+This opens up a bash terminal in a new preconfigured and sourced ROS2 workspace.
+
+Proceed to build and source your workspace
+```
+colcon build --symlink-install && source install/setup.bash
+```
+
+## manual local setup (linux)
 ```
 mkdir -p robot_worlds_ws/src
 cd robot_worlds_ws
@@ -13,14 +39,24 @@ git clone https://github.com/yojuna/robot-worlds
 colcon build --symlink-install
 source install/setup.bash
 ```
+handle missing dependencies
+```
+rosdep install --from-paths src -y --ignore-src
+```
+or install manually if somethings gets missed.
 
 - index for different launch files to be included eventually. 
 
-# Robots
+# Le Robots
 
 ## Turtlebot3 with Open Manipulator X
 
-![turtlebot3 open manipulator](https://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/tb3_manipulation_ros2_gazebo.png)
+![turtlebot3 open manipulator](./assets/tb3_om_moveit_gz.jpg)
+
+run,
+```
+ros2 launch robot_worlds tb3_om_gz_moveit.launch.py
+```
 
 ## Turtlebot3 [Waffle, Waffle Pi, Burger]
 
@@ -73,7 +109,7 @@ This starts gazebo with preconfigured rviz (camera, odom, laserscan in the /odom
 
 
 
-### Gazebo Empty World
+### Gazebo World
 
 ![tb3 gazebo empty world](./assets/tb3_world_gz.jpg)
 

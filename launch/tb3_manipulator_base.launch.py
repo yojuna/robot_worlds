@@ -86,10 +86,11 @@ def generate_launch_description():
             ' ',
             PathJoinSubstitution(
                 [
-                    FindPackageShare('robot_worlds'),
-                    'robots',
-                    'turtlebot3_manipulation',
-                    'turtlebot3_manipulation_description',
+                    # FindPackageShare('robot_worlds'),
+                    # 'robots',
+                    # 'turtlebot3_manipulation',
+                    FindPackageShare('turtlebot3_manipulation_description'),
+                    # 'turtlebot3_manipulation_description',
                     'urdf',
                     'turtlebot3_manipulation.urdf.xacro'
                 ]
@@ -111,9 +112,10 @@ def generate_launch_description():
 
     controller_manager_config = PathJoinSubstitution(
         [
-            FindPackageShare('robot_worlds'),
-            'robots',
-            'turtlebot3_manipulation',
+            # FindPackageShare('robot_worlds'),
+            # 'robots',
+            # 'turtlebot3_manipulation',
+            FindPackageShare('turtlebot3_manipulation'),
             'turtlebot3_manipulation_bringup',
             'config',
             'hardware_controller_manager.yaml',
@@ -122,9 +124,10 @@ def generate_launch_description():
 
     rviz_config_file = PathJoinSubstitution(
         [
-            FindPackageShare('robot_worlds'),
-            'robots',
-            'turtlebot3_manipulation',
+            # FindPackageShare('robot_worlds'),
+            # 'robots',
+            # 'turtlebot3_manipulation',
+            FindPackageShare('turtlebot3_manipulation'),
             'turtlebot3_manipulation_bringup',
             'rviz',
             'turtlebot3_manipulation.rviz'
