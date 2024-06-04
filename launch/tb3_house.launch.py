@@ -26,6 +26,7 @@ from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
+# export TURTLEBOT3_MODEL=waffle
 
 def get_robot_world(world_name, launch_name):
     world = os.path.join(
@@ -43,8 +44,8 @@ def generate_launch_description():
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     # gazebo_ros_dir = get_package_share_directory('gazebo_ros')
 
-    pose = {'x': LaunchConfiguration('x_pose', default='-2.00'),
-            'y': LaunchConfiguration('y_pose', default='-2.00'),
+    pose = {'x': LaunchConfiguration('x_pose', default='0.00'),
+            'y': LaunchConfiguration('y_pose', default='-0.50'),
             'z': LaunchConfiguration('z_pose', default='0.01'),
             'R': LaunchConfiguration('roll', default='0.00'),
             'P': LaunchConfiguration('pitch', default='0.00'),
@@ -81,7 +82,7 @@ def generate_launch_description():
             # turtlebot3_dqn_stage3
             # turtlebot3_house
 
-    SELECTED_WORLD = 'turtlebot3_world'
+    SELECTED_WORLD = 'turtlebot3_house'
 
     world = os.path.join(
         get_package_share_directory('turtlebot3_gazebo'),
@@ -181,9 +182,9 @@ def generate_launch_description():
     ld.add_action(launch_gazebo_world)
 
     # # rviz
-    # ld.add_action(declare_rviz_arg)
-    # ld.add_action(declare_rviz_config_arg)
-    # ld.add_action(launch_rviz)
+    ld.add_action(declare_rviz_arg)
+    ld.add_action(declare_rviz_config_arg)
+    ld.add_action(launch_rviz)
 
     # teleop
     ld.add_action(declare_teleop_arg)

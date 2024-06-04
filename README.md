@@ -13,11 +13,6 @@ git clone https://github.com/yojuna/robot-worlds
 colcon build
 
 source install/setup.bash
-
-export TURTLEBOT3_MODEL=waffle_pi
-
-ros2 launch robot_worlds tb3_world.launch.py
-
 ```
 
 - index for different launch files to be included eventually. 
@@ -32,6 +27,29 @@ ros2 launch robot_worlds tb3_world.launch.py
 
 ![turtlebot3 burger empty world](https://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_empty_world.png)
 
+tb3 simulation setup guide: https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/
+
+```
+cd  src
+git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+cd ../
+colcon build --symlink-install && source install/setup.bash
+```
+
+Run the tb3 world simulation
+
+```
+ros2 launch robot_worlds tb3_world.launch
+```
+
+### note:
+if gazebo throws errors when using with docker:
+run:
+```
+. /usr/share/gazebo/setup.sh
+```
+this sets up necessary gazebo environment variables and other things. ref: https://answers.ros.org/question/358847/cannot-launch-gzclient-on-a-launch-file-results-in-shared_ptr-assertion-error/
+
 # Worlds
 
 
@@ -44,6 +62,15 @@ ros2 launch robot_worlds tb3_world.launch.py
 ## Gazebo House World
 
 ![gazebo house world](https://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_house.png)
+
+after building, run,
+```
+ros2 launch robot_worlds tb3_house.launch.py
+```
+![tb3 house gazebo](./assets/tb3_house_gz.jpg)
+![tb3 house rviz](./assets/tb3_house_rviz.jpg)
+
+
 
 ## Gazebo Empty World
 

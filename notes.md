@@ -1,3 +1,76 @@
+# robot_worlds
+
+## TODOs
+
+1. ROS gazebo GPU docker
+    - base image with all requirements
+
+2. Models/Worlds loading dev environemnt docker
+    - layer over the base image
+    - VSCode support eventually
+
+3. Eventually/for kicks & grok: kubernetes (container orchestration support for local and cloud setups)
+--- 
+
+## wiki/guide notes
+
+### dockers
+
+    - use layers of images
+    - add dev container support
+
+#### setup
+
+start from nvidia cuda base image
+in dockerfile:
+    - install gazebo and ros
+    https://gazebosim.org/docs/harmonic/ros_installation
+
+Docker files reside in the docker folder.
+run 
+
+#### ROS Dev containers:
+
+![Multi Stage build charts ](assets/ros-docker-containers.jpg)
+
+#### dev containers
+
+
+- ref: [GH: Dev Container Build and Run (devcontainers/ci)](https://github.com/devcontainers/ci)
+    - The Dev Container Build and Run GitHub Action is aimed at making it easier to re-use Dev Containers in a GitHub workflow. 
+
+#### refs: 
+
+[Robotic Sea Bass: A Guide to Docker and ROS](https://roboticseabass.com/2021/04/21/docker-and-ros/)
+Great guide for understanding multi stage builds & instructive github repository for ROS docker workflows: [GH: sea-bass / turtlebot3_behavior_demos](https://github.com/sea-bass/turtlebot3_behavior_demos)
+[Robotic Sea Bass: An Updated Guide to Docker and ROS 2](https://roboticseabass.com/2023/07/09/updated-guide-docker-and-ros2/)
+
+### gazebo versions 
+
+Always been plagued with the question of which gz ros versions to put together.
+[Gazebo Doc: Summary of Compatible ROS and Gazebo Combinations](https://gazebosim.org/docs/harmonic/ros_installation#summary-of-compatible-ros-and-gazebo-combinations)
+TL;DR
+- ROS 2 (Humble) - GZ Fortress
+- ROS Noetic - GZ Citadel
+
+Recommended (from Gazebo docs) to use default version of Gazebo available from the ROS repository when installing ros_gz. The following command will install the correct version of Gazebo and ros_gz for your ROS installation on a Linux system. You should replace ${ROS_DISTRO} with your ROS distribution (e.g. humble, rolling,foxy, noetic, etc).
+
+```
+sudo apt-get install ros-${ROS_DISTRO}-ros-gz
+```
+- ref: [Installing the Default Gazebo/ROS Pairing](https://gazebosim.org/docs/harmonic/ros_installation#installing-the-default-gazebo-ros-pairing)
+
+
+ROS Ubuntu compatible versions:
+
+![ROS Ubuntu Comparisons image](assets/ros-ubuntu-versions.jpg)
+
+- ref: [ubuntu blog: ROS versions](https://ubuntu.com/blog/ros-foxy-ros-melodic-eol)
+### ubu
+
+
+---
+
 # tasks
 
 ## TODO:
