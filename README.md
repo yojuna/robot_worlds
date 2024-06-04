@@ -10,8 +10,7 @@ cd robot_worlds_ws
 
 git clone https://github.com/yojuna/robot-worlds
 
-colcon build
-
+colcon build --symlink-install
 source install/setup.bash
 ```
 
@@ -53,30 +52,37 @@ this sets up necessary gazebo environment variables and other things. ref: https
 # Worlds
 
 
----
+## Turtlebot3 Simulations
 
-# Turtlebot3 Simulations
+Turtlebot3 simulation worlds
 
-[reference - robotis turtlebot3 E manual ](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
+reference: [robotis turtlebot3 E manual ](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 
-## Gazebo House World
+### Gazebo House World
 
 ![gazebo house world](https://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_house.png)
 
 after building, run,
 ```
+export TURTLEBOT3_MODEL=waffle 
 ros2 launch robot_worlds tb3_house.launch.py
 ```
+This starts gazebo with preconfigured rviz (camera, odom, laserscan in the /odom global frame) and a teleop node to move the turtlebot around.
 ![tb3 house gazebo](./assets/tb3_house_gz.jpg)
 ![tb3 house rviz](./assets/tb3_house_rviz.jpg)
 
 
 
-## Gazebo Empty World
+### Gazebo Empty World
 
-![gazebo empty world](https://emanual.robotis.com/assets/images/platform/turtlebot3/ros2/gazebo_world.png)
+![tb3 gazebo empty world](./assets/tb3_world_gz.jpg)
 
----
+run,
+```
+export TURTLEBOT3_MODEL=waffle 
+ros2 launch robot_worlds tb3_world.launch.py
+```
+![tb3 empty world rviz](./assets/tb3_world_rviz.jpg)
 
 ---
 

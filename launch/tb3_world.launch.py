@@ -43,8 +43,8 @@ def generate_launch_description():
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     # gazebo_ros_dir = get_package_share_directory('gazebo_ros')
 
-    pose = {'x': LaunchConfiguration('x_pose', default='-2.00'),
-            'y': LaunchConfiguration('y_pose', default='-2.00'),
+    pose = {'x': LaunchConfiguration('x_pose', default='2.00'),
+            'y': LaunchConfiguration('y_pose', default='-0.50'),
             'z': LaunchConfiguration('z_pose', default='0.01'),
             'R': LaunchConfiguration('roll', default='0.00'),
             'P': LaunchConfiguration('pitch', default='0.00'),
@@ -129,7 +129,7 @@ def generate_launch_description():
     # start rviz
 
     ## select rviz config
-    rviz_config='tb3_house'
+    rviz_config='tb3_world'
 
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     declare_rviz_arg = DeclareLaunchArgument(
@@ -181,9 +181,9 @@ def generate_launch_description():
     ld.add_action(launch_gazebo_world)
 
     # # rviz
-    # ld.add_action(declare_rviz_arg)
-    # ld.add_action(declare_rviz_config_arg)
-    # ld.add_action(launch_rviz)
+    ld.add_action(declare_rviz_arg)
+    ld.add_action(declare_rviz_config_arg)
+    ld.add_action(launch_rviz)
 
     # teleop
     ld.add_action(declare_teleop_arg)

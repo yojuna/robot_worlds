@@ -5,6 +5,8 @@
 source /opt/ros/${ROS_DISTRO}/setup.bash
 echo "Sourced ROS 2 ${ROS_DISTRO}"
 
+source /usr/share/gazebo/setup.sh
+export TURTLEBOT3_MODEL=waffle
 # # Source the base workspace, if built
 # if [ -f /turtlebot3_ws/install/setup.bash ]
 # then
